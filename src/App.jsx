@@ -77,7 +77,7 @@ function App() {
               lineHeight: 1.1,
               marginBottom: '1rem'
             }}>
-              Full-Stack & Cloud <br />
+
               <span className="gradient-text">Software Engineer</span>
             </h1>
 

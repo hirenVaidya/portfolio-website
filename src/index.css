@@ -192,6 +192,13 @@ body {
   border: 4px solid var(--bg-color);
   transition: transform 0.5s ease;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+  animation: floatAvatar 6s ease-in-out infinite;
+}
+
+@keyframes floatAvatar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
 
 .hero-image-wrapper:hover .hero-image {
