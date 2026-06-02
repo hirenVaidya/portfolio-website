@@ -70,7 +70,7 @@ function App() {
             <a href="#knowledge" className="nav-link">Knowledge</a>
             <a href="#experience" className="nav-link">Experience</a>
             <a href="#projects" className="nav-link">Projects</a>
-            <a href="mailto:hirenvaidya82001@gmail.com" className="btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
               <Paperclip size={16} />
               Resume
             </a>
