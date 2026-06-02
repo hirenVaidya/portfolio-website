@@ -121,7 +121,7 @@ function App() {
 
               <h4 style={{ fontSize: '1.1rem', color: 'white', marginBottom: '0.5rem' }}>Backend & Cloud:</h4>
               <p className="text-secondary" style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                On the backend, I have deep experience migrating frameworks (like .NET 5 to .NET 8) and designing serverless architectures using AWS Lambda, EventBridge, and DynamoDB. I've architected complex portals with secure JWT-based authentication and real-time streaming capabilities.
+                On the backend, with 2+ year of experience in React.js, Node.js, SQL Server, JWT authentication, RESTful APIs, real-time systems, and AWS cloud services. Experienced in building secure, scalable, and high-performance applications.
               </p>
 
               <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
@@ -279,7 +279,7 @@ function App() {
 
       <footer style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-tertiary)', borderTop: '1px solid var(--glass-border)' }}>
         <p>© {new Date().getFullYear()} Hiren Vaidya. All rights reserved.</p>
-        <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>Redesigned with <span className="text-accent">♥</span> using React</p>
+        <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>Redesigned by Hire Vaidya <span className="text-accent">♥</span> using React</p>
       </footer>
     </div>
   );
