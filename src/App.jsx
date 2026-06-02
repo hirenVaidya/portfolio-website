@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip } from 'lucide-react';
 import './index.css';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,9 +14,36 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const experiences = [
+    {
+      company: "Empronc Solutions",
+      role: "Application Developer",
+      date: "Dec 2025 – Present",
+      location: "Mumbai, India",
+      details: [
+        "Frontend & UI Modernization: Developed 2 projects from scratch, ensuring pixel-perfect UI implementation from Figma designs and delivering seamless user experiences. Achieved 95% client satisfaction through iterative feedback loops and modern React.js patterns.",
+        "Technical SEO & Performance: Improved website ranking from 7th to 3rd in the unlisted share category through technical SEO optimization. Implemented lazy loading and resolved indexing errors, resulting in a 40% increase in organic traffic and a 15% reduction in bounce rate.",
+        "ASP.NET MVC to React Migration: migrated ASP.NET Web API application to React, significantly improving performance in rendering data-heavy tables and media content."
+      ]
+    },
+    {
+      company: "Prabhudas Lilladher Pvt. Ltd",
+      role: "Software Developer Engineer",
+      date: "May 2024 – Dec 2025",
+      location: "Mumbai, India",
+      details: [
+        "PLSGB In-House Portal: Engineered a secure SGB application portal with JWT-based authentication. Integrated RazorPay, facilitating over 5kg of SGB sales and achieving a revenue milestone of 3 million INR.",
+        "PLAdvisory Broker Management: Architected a complex broker management system featuring dynamic dashboards, server-side pagination, and advanced filtering. Optimized frontend performance to achieve a Lighthouse score of 85+, reducing load times by 30%.",
+        "Trade-Script Real-time Dashboard: Developed a Node.js backend with a real-time enabled frontend for live trade analysis. Enabled live data streaming for 50+ brokers, improving operational efficiency by 30% and reducing manual effort by 40%.",
+        "Automation & Scaling: Automated image compression and report generation using CRON jobs, saving 6 man-hours daily. Streamlined data ingestion by implementing bulk insert functionality for large financial datasets.",
+        "EIPO Modernization: Revamped the EIPO frontend using React.js, modernizing the UI/UX and improving interaction speed and system responsiveness by 20%."
+      ]
+    }
+  ];
+
   return (
-    <div className="app-container">
-      <div className="grid-bg"></div>
+    <div style={{ position: 'relative' }}>
+      <div className="noise"></div>
 
       {/* Navigation */}
       <nav style={{
@@ -23,379 +51,235 @@ function App() {
         top: 0,
         width: '100%',
         padding: scrolled ? '1rem 2rem' : '1.5rem 2rem',
-        background: scrolled ? 'rgba(5, 5, 5, 0.8)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
+        background: scrolled ? 'rgba(18, 18, 18, 0.8)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--glass-border)' : '1px solid transparent',
         transition: 'all 0.3s ease',
         zIndex: 100,
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'center',
       }}>
-        <div style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.5px' }}>
-          Hiren<span className="gradient-text">Vaidya</span>
-        </div>
-        <div style={{ display: 'none', gap: '2rem' }} className="nav-links">
-          <a href="#about" className="nav-link">About</a>
-          <a href="#experience" className="nav-link">Experience</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#skills" className="nav-link">Skills</a>
-          <a href="#certifications" className="nav-link">Certifications</a>
-        </div>
-        <div style={{ display: 'flex', gap: '2rem' }}>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#experience" className="nav-link">Experience</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#skills" className="nav-link">Skills</a>
-          <a href="#certifications" className="nav-link">Certifications</a>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px' }}>
+          <a href="#" style={{ fontSize: '1.5rem', fontWeight: 800, textDecoration: 'none', color: 'white', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+            <span>Hiren</span>
+            <span className="text-accent text-tertiary" style={{ fontSize: '1.8rem', margin: '0 0.2rem' }}>X</span>
+            <span>Vaidya</span>
+          </a>
+          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links">
+            <a href="#about" className="nav-link">About</a>
+            <a href="#knowledge" className="nav-link">Knowledge</a>
+            <a href="#experience" className="nav-link">Experience</a>
+            <a href="#projects" className="nav-link">Projects</a>
+            <a href="mailto:hirenvaidya82001@gmail.com" className="btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
+              <Paperclip size={16} />
+              Resume
+            </a>
+          </div>
         </div>
       </nav>
 
       <main style={{ padding: '0 2rem', maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* Hero Section */}
-        <section className="hero-section">
-          <div className="hero-text-content">
-            <div className="animate-fade-in" style={{
-              display: 'inline-block',
-              padding: '0.4rem 1rem',
-              background: 'var(--glass-bg)',
-              border: '1px solid var(--glass-border)',
-              borderRadius: '50px',
-              color: 'var(--accent-secondary)',
-              fontSize: '0.9rem',
-              fontWeight: 500,
-              marginBottom: '1.5rem',
-              width: 'fit-content'
-            }}>
-              👋 Welcome to my portfolio
-            </div>
+        <header style={{ paddingTop: '15rem', paddingBottom: '8rem', maxWidth: '800px' }}>
+          <h2 className="text-tertiary animate-fade-in" style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+            Hello, my name is.
+          </h2>
+          <h1 className="animate-fade-in delay-1" style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem' }}>
+            Hiren Vaidya
+          </h1>
+          <h2 className="animate-fade-in delay-2 text-secondary" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, marginBottom: '2rem' }}>
+            I am a <span className="text-accent">Software</span> Engineer.
+          </h2>
+          <p className="animate-fade-in delay-3 text-secondary" style={{ fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '600px', marginBottom: '3rem' }}>
+            Specialized in deploying scalable infrastructure on AWS and building robust applications using .NET, Node.js, and React.js. I blend cloud automation with seamless user experiences.
+          </p>
+          <a href="#about" className="btn-outline animate-fade-in delay-4">
+            <ChevronRight size={18} /> More about me
+          </a>
+        </header>
 
-            <h1 className="animate-fade-in delay-1" style={{
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '1rem'
-            }}>
-
-              <span className="gradient-text">Software Engineer</span>
-            </h1>
-
-            <p className="animate-fade-in delay-2" style={{
-              fontSize: '1.2rem',
-              color: 'var(--text-secondary)',
-              maxWidth: '650px',
-              lineHeight: 1.6,
-              marginBottom: '2.5rem'
-            }}>
-              Hi, I'm Hiren Vaidya. I specialize in deploying scalable infrastructure on AWS and building robust applications using .NET, Node.js, and React.js. I blend cloud automation with seamless user experiences.
-            </p>
-
-            <div className="animate-fade-in delay-3" style={{ display: 'flex', gap: '1rem' }}>
-              <a href="#experience" className="btn-primary">
-                View Experience <ChevronRight size={18} />
-              </a>
-              <a href="mailto:hirenvaidya82001@gmail.com" className="btn-secondary">
-                Contact Me
-              </a>
-            </div>
-
-            <div className="animate-fade-in delay-4" style={{
-              display: 'flex',
-              gap: '1.5rem',
-              marginTop: '3.5rem',
-              alignItems: 'center'
-            }}>
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Connect with me:</span>
-              <a href="https://github.com/hirenVaidya" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', transition: 'color 0.2s' }}>
-                <Github size={24} />
-              </a>
-              <a href="https://www.linkedin.com/in/hiren-vaidya-163989217/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', transition: 'color 0.2s' }}>
-                <Linkedin size={24} />
-              </a>
-              <a href="mailto:hirenvaidya82001@gmail.com" style={{ color: 'var(--text-primary)', transition: 'color 0.2s' }}>
-                <Mail size={24} />
-              </a>
-            </div>
+        {/* About Section */}
+        <section id="about" style={{ padding: '6rem 0' }}>
+          <h1 style={{ fontSize: '10rem', color: 'rgba(255,255,255,0.02)', position: 'absolute', zIndex: -1, transform: 'translateY(-50px)', fontWeight: 800, letterSpacing: '10px', userSelect: 'none' }}>HIREN</h1>
+          <div className="section-title-container" style={{ marginTop: '5rem' }}>
+            <Cpu size={28} className="text-accent" />
+            <h3>About me</h3>
+            <div className="section-line"></div>
           </div>
 
-          <div className="hero-image-container animate-fade-in delay-2">
-            <div className="hero-image-wrapper">
-              <img src="/profile.png" alt="Hiren Vaidya" className="hero-image" />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginTop: '3rem' }}>
+            <div>
+              <p className="text-secondary" style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
+                Hello! 👋 I'm Hiren Vaidya, an ambitious Software Engineer. As a FullStack Developer, I bring hands-on experience with a versatile tech stack including React, Node.js, .NET, and AWS cloud infrastructure.
+              </p>
+              
+              <h4 style={{ fontSize: '1.1rem', color: 'white', marginBottom: '0.5rem', marginTop: '2rem' }}>Frontend & UI:</h4>
+              <p className="text-secondary" style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
+                In the frontend realm, my expertise extends to building responsive and pixel-perfect UIs with React.js. I focus on optimizing performance, implementing lazy loading, and ensuring modern SEO standards to deliver seamless user experiences.
+              </p>
+
+              <h4 style={{ fontSize: '1.1rem', color: 'white', marginBottom: '0.5rem' }}>Backend & Cloud:</h4>
+              <p className="text-secondary" style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
+                On the backend, I have deep experience migrating frameworks (like .NET 5 to .NET 8) and designing serverless architectures using AWS Lambda, EventBridge, and DynamoDB. I've architected complex portals with secure JWT-based authentication and real-time streaming capabilities.
+              </p>
+
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+                <a href="https://github.com/hirenVaidya" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)' }}><Github size={24} /></a>
+                <a href="https://www.linkedin.com/in/hiren-vaidya-163989217/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)' }}><Linkedin size={24} /></a>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+              <div className="about-img-box">
+                <img src="/profile.png" alt="Hiren Vaidya" style={{ width: '300px', height: '400px', objectFit: 'cover' }} />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* About & Education Section */}
-        <section id="about" style={{ padding: '6rem 0' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-
-            <div className="glass-card">
-              <Cloud size={32} color="var(--accent-secondary)" style={{ marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Cloud Architecture</h3>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Expertise in AWS Serverless Architecture, EC2, S3, RDS, and scalable deployments. Experienced in building serverless event-driven workflows with Lambda and EventBridge.
-              </p>
+        {/* Knowledge Section */}
+        <section id="knowledge" style={{ padding: '6rem 0' }}>
+          <div className="glass-card" style={{ position: 'relative', overflow: 'hidden' }}>
+            <div className="section-title-container" style={{ justifyContent: 'center' }}>
+              <div className="section-line invert" style={{ flex: 1, display: 'block' }}></div>
+              <Cloud size={28} className="text-accent" />
+              <h3 style={{ margin: '0 1rem' }}>What I have worked on</h3>
+              <div className="section-line" style={{ flex: 1, display: 'block' }}></div>
             </div>
+            
+            <p className="text-secondary" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              These are some of the technologies I have used and have great familiarity with:
+            </p>
 
-            <div className="glass-card">
-              <Database size={32} color="var(--accent-color)" style={{ marginBottom: '1rem' }} />
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Full-Stack Development</h3>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Proficient in building scalable backend systems with .NET and Node.js, and creating dynamic frontends with React.js. Experienced in optimizing databases like MySQL and SQL Server.
-              </p>
-            </div>
-
-            <div className="glass-card" style={{ gridColumn: '1 / -1' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                <GraduationCap size={28} color="var(--text-primary)" />
-                <h3 style={{ fontSize: '1.5rem', margin: 0 }}>Education</h3>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-                <div>
-                  <h4 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.2rem' }}>B.Sc in Information Technology</h4>
-                  <p style={{ color: 'var(--accent-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Narsee Monjee College of Commerce and Economics (Sep 2020 – Jun 2024)</p>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>CGPA: 6.5</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+              {[
+                { name: 'React.js', icon: <Cpu size={32} className="text-accent" /> },
+                { name: 'Node.js', icon: <Server size={32} className="text-accent" /> },
+                { name: '.NET', icon: <Terminal size={32} className="text-accent" /> },
+                { name: 'AWS', icon: <Cloud size={32} className="text-accent" /> },
+                { name: 'SQL Server', icon: <Database size={32} className="text-accent" /> },
+                { name: 'TypeScript', icon: <Terminal size={32} className="text-accent" /> }
+              ].map((tech, i) => (
+                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  {tech.icon}
+                  <span className="text-secondary" style={{ fontWeight: 500 }}>{tech.name}</span>
                 </div>
-              </div>
+              ))}
             </div>
-
           </div>
         </section>
 
         {/* Experience Section */}
         <section id="experience" style={{ padding: '6rem 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-            <Briefcase size={32} color="var(--text-primary)" />
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>Experience</h2>
-            <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <div className="section-title-container">
+            <Briefcase size={28} className="text-accent" />
+            <h3>Experience</h3>
+            <div className="section-line"></div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            {/* Empronc Solutions */}
-            <div className="glass-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Application Developer</h3>
-                  <h4 style={{ color: 'var(--accent-secondary)', fontSize: '1.1rem', fontWeight: 500 }}>Empronc Solutions</h4>
-                </div>
-                <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.4rem 1rem', borderRadius: '20px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                  Dec 2025 – April 2026 | Mumbai, India
-                </div>
+          <div style={{ display: 'flex', gap: '3rem', marginTop: '3rem', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 250px' }}>
+              <div className="tab-list">
+                {experiences.map((exp, index) => (
+                  <div 
+                    key={index} 
+                    className={`tab-item ${activeTab === index ? 'active' : ''}`}
+                    onClick={() => setActiveTab(index)}
+                  >
+                    {exp.company}
+                  </div>
+                ))}
               </div>
-              <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <li><strong>Optimized Data & Framework:</strong> Upgraded application framework from .NET 5 to .NET 8, improving performance, security, and maintainability. Collaborated on UI improvements for better workflow management.</li>
-                <li><strong>Excel PO Requisition Upload:</strong> Developed a bulk-processing feature to automate closure of requisition lines via Excel upload, eliminating manual work and boosting efficiency.</li>
-                <li><strong>Patch Delivery:</strong> Delivered 182 patches over 5 months (120 backend, 40 UI, 22 database), resolving business logic, API handling, and query optimization issues.</li>
-              </ul>
             </div>
 
-            {/* Prabhudas Lilladher */}
-            <div className="glass-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Software Developer Engineer</h3>
-                  <h4 style={{ color: 'var(--accent-secondary)', fontSize: '1.1rem', fontWeight: 500 }}>Prabhudas Lilladher Pvt. Ltd</h4>
-                </div>
-                <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.4rem 1rem', borderRadius: '20px', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                  May 2024 – Dec 2025 | Mumbai, India
-                </div>
-              </div>
-              <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <li><strong>EIPO Application Revamp:</strong> Modernized frontend using React.js and implemented BSE IPO workflows, improving UI/UX, interaction speed, and system performance by 20%.</li>
-                <li><strong>PDF Generation & Docker:</strong> Implemented a client-side PDF generation feature via Node.js hosted on IIS. Built a Dockerized CI/CD pipeline for consistent deployments.</li>
-                <li><strong>Optimized Data Insertion:</strong> Significantly reduced load times by implementing bulk insert functionality for large data sets. Added Excel upload categorization features.</li>
-                <li><strong>Re-KYC & UAT:</strong> Developed client re-KYC workflows and actively debugged/deployed updates during User Acceptance Testing.</li>
+            <div style={{ flex: '1 1 500px' }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+                {experiences[activeTab].role} <span className="text-accent">@ {experiences[activeTab].company}</span>
+              </h3>
+              <p className="text-tertiary" style={{ fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+                {experiences[activeTab].date} | {experiences[activeTab].location}
+              </p>
+              
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', listStyle: 'none' }}>
+                {experiences[activeTab].details.map((detail, i) => {
+                  const parts = detail.split(': ');
+                  const strongText = parts[0];
+                  const restText = parts.slice(1).join(': ');
+                  return (
+                    <li key={i} style={{ position: 'relative', paddingLeft: '1.5rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                      <span style={{ position: 'absolute', left: 0, color: 'var(--accent-color)' }}>▹</span>
+                      {restText ? <><strong style={{ color: 'var(--text-primary)' }}>{strongText}:</strong> {restText}</> : detail}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
         </section>
 
         {/* Projects Section */}
-        <section id="projects" style={{ padding: '6rem 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-            <Terminal size={32} color="var(--text-primary)" />
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>Projects</h2>
-            <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+        <section id="projects" style={{ padding: '6rem 0', marginBottom: '4rem' }}>
+          <div className="section-title-container">
+            <Terminal size={28} className="text-accent" />
+            <h3>Projects</h3>
+            <div className="section-line"></div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-
-            {/* HRMS */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+            
+            {/* NexSync */}
             <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>Serverless HRMS</h3>
-              <p style={{ color: 'var(--accent-color)', fontSize: '0.9rem', marginBottom: '1rem' }}>AWS Serverless Architecture</p>
-              <p style={{ color: 'var(--text-secondary)', flex: 1, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Fully serverless Human Resource Management System using AWS cloud. Utilized API Gateway, Lambda, DynamoDB for employee records & payroll, and S3 for documents. Frontend built with HTML/CSS/JS.
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <Terminal size={32} className="text-accent" />
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <a href="#" style={{ color: 'var(--text-secondary)' }}><Github size={20} /></a>
+                  <a href="#" style={{ color: 'var(--text-secondary)' }}><ExternalLink size={20} /></a>
+                </div>
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>NexSync</h3>
+              <p className="text-accent" style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>Real-Time Communication Platform</p>
+              <p className="text-secondary" style={{ flex: 1, lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                Built a custom WebRTC platform from scratch, enabling low-latency, peer-to-peer video conferencing. Developed a scalable real-time engine using Node.js, with end-to-end encrypted messaging.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['AWS Lambda', 'DynamoDB', 'API Gateway', 'S3'].map(tech => (
-                  <span key={tech} style={{ padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', fontSize: '0.8rem' }}>{tech}</span>
-                ))}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', color: 'var(--text-tertiary)', fontSize: '0.85rem', fontFamily: 'monospace' }}>
+                <span>MERN</span> <span>WebRTC</span> <span>Node.js</span> <span>Socket.io</span>
               </div>
             </div>
 
             {/* Image Processing */}
             <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <Cloud size={32} className="text-accent" />
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <a href="#" style={{ color: 'var(--text-secondary)' }}><Github size={20} /></a>
+                  <a href="#" style={{ color: 'var(--text-secondary)' }}><ExternalLink size={20} /></a>
+                </div>
+              </div>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>Image Processing System</h3>
-              <p style={{ color: 'var(--accent-color)', fontSize: '0.9rem', marginBottom: '1rem' }}>AWS Cloud</p>
-              <p style={{ color: 'var(--text-secondary)', flex: 1, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Built a robust serverless image analysis workflow automating processing pipelines using AWS Lambda, Amazon Rekognition, DynamoDB, SNS, EventBridge, and CloudFormation.
+              <p className="text-accent" style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>AWS Cloud</p>
+              <p className="text-secondary" style={{ flex: 1, lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                Architected a serverless image analysis workflow using Step Functions, Lambda, and Amazon Rekognition to automate visual data processing at scale.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['Rekognition', 'EventBridge', 'SNS', 'CloudFormation'].map(tech => (
-                  <span key={tech} style={{ padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', fontSize: '0.8rem' }}>{tech}</span>
-                ))}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', color: 'var(--text-tertiary)', fontSize: '0.85rem', fontFamily: 'monospace' }}>
+                <span>Node.js</span> <span>Step Functions</span> <span>Lambda</span> <span>Rekognition</span>
               </div>
             </div>
 
-            {/* Bus Management */}
-            <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>Bus Management System</h3>
-              <p style={{ color: 'var(--accent-color)', fontSize: '0.9rem', marginBottom: '1rem' }}>.NET MVC & AWS</p>
-              <p style={{ color: 'var(--text-secondary)', flex: 1, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Core management system integrating ASP.NET Core Identity for secure authentication. Managed relational data for clients and bookings using SQL Server integrated with AWS RDS for scalability.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['.NET MVC', 'SQL Server', 'AWS RDS', 'Core Identity'].map(tech => (
-                  <span key={tech} style={{ padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', fontSize: '0.8rem' }}>{tech}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* MeetsVirtual */}
-            <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>MeetsVirtual</h3>
-              </div>
-              <p style={{ color: 'var(--accent-color)', fontSize: '0.9rem', marginBottom: '1rem' }}>XR & Metaverse Platform</p>
-              <p style={{ color: 'var(--text-secondary)', flex: 1, lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                A futuristic VR platform built to reshape virtual collaboration. Blends cloud technology with virtual reality to create immersive art spaces and virtual meeting rooms.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {['Unity', 'C#', 'Cloud Hosting', 'VR/XR'].map(tech => (
-                  <span key={tech} style={{ padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', fontSize: '0.8rem' }}>{tech}</span>
-                ))}
-              </div>
-            </div>
-
+          </div>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+            <a href="https://github.com/hirenVaidya" target="_blank" rel="noreferrer" className="btn-outline">
+              <Github size={18} /> My Repositories
+            </a>
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section id="skills" style={{ padding: '4rem 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-            <Cpu size={32} color="var(--text-primary)" />
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>Technical Skills</h2>
-            <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-
-            <div className="glass-card" style={{ padding: '2rem' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--accent-secondary)' }}>Frameworks & Languages</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-                {['.NET (MVC, ASPX)', 'C#', 'Node.js', 'React.js', 'jQuery'].map(skill => (
-                  <span key={skill} style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '0.9rem' }}>{skill}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className="glass-card" style={{ padding: '2rem' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--accent-color)' }}>Cloud & Infrastructure</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-                {['AWS EC2', 'S3', 'RDS', 'Route 53', 'VPC', 'CloudFront'].map(skill => (
-                  <span key={skill} style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '0.9rem' }}>{skill}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className="glass-card" style={{ padding: '2rem' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Databases & Monitoring</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-                {['MySQL', 'SQL Server (SSMS)', 'CloudWatch', 'Kafka'].map(skill => (
-                  <span key={skill} style={{ padding: '0.4rem 1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', fontSize: '0.9rem' }}>{skill}</span>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        {/* Certifications Section */}
-        <section id="certifications" style={{ padding: '4rem 0 8rem 0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-            <Award size={32} color="var(--text-primary)" />
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>Certifications</h2>
-            <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-
-            <div className="glass-card" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              <div style={{ width: '50px', height: '50px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Cloud size={24} color="var(--accent-secondary)" />
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.3rem' }}>AWS Solution Architect – Associate</h3>
-                <p style={{ color: 'var(--accent-color)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>SAA-C03</p>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Score: 660/1000</p>
-              </div>
-            </div>
-
-            <div className="glass-card" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              <div style={{ width: '50px', height: '50px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Award size={24} color="var(--accent-color)" />
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.3rem' }}>AWS Cloud Practitioner Essentials</h3>
-                <p style={{ color: 'var(--accent-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>AWS Training & Certification</p>
-              </div>
-            </div>
-
-            <div className="glass-card" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              <div style={{ width: '50px', height: '50px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Cloud size={24} color="var(--text-primary)" />
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.3rem' }}>Introduction to Cloud</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>AWS Educate</p>
-              </div>
-            </div>
-
-            <div className="glass-card" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              <div style={{ width: '50px', height: '50px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Cpu size={24} color="#00d2ff" />
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.3rem' }}>Machine Learning Foundation</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>AWS Educate</p>
-              </div>
-            </div>
-
-          </div>
-        </section>
       </main>
 
-      {/* Footer */}
-      <footer style={{
-        borderTop: '1px solid var(--glass-border)',
-        padding: '3rem 2rem',
-        textAlign: 'center',
-        background: 'rgba(0,0,0,0.3)'
-      }}>
-        <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>Hiren<span className="gradient-text">Vaidya</span></h2>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-          Building the future of scalable infrastructure and robust applications.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '2rem' }}>
-          <a href="https://github.com/hirenVaidya" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>GitHub</a>
-          <a href="https://www.linkedin.com/in/hiren-vaidya-163989217/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>LinkedIn</a>
-          <a href="mailto:hirenvaidya82001@gmail.com" style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Email</a>
-        </div>
-        <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem' }}>
-          © {new Date().getFullYear()} Hiren Vaidya. All rights reserved.
-        </p>
+      <footer style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-tertiary)', borderTop: '1px solid var(--glass-border)' }}>
+        <p>© {new Date().getFullYear()} Hiren Vaidya. All rights reserved.</p>
+        <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>Redesigned with <span className="text-accent">♥</span> using React</p>
       </footer>
     </div>
   );
