@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip } from 'lucide-react';
 import './index.css';
+import { GridScan } from './components/GridScan/GridScan';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,26 +79,49 @@ function App() {
         </div>
       </nav>
 
-      <main style={{ padding: '0 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Hero Section */}
+      <section style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1, overflow: 'hidden' }}>
+          <GridScan
+            sensitivity={0.55}
+            lineThickness={1}
+            linesColor="#2F293A"
+            scanColor="#FF9FFC"
+            scanOpacity={0.4}
+            gridScale={0.1}
+            lineStyle="solid"
+            lineJitter={0.1}
+            scanDirection="pingpong"
+            noiseIntensity={0.01}
+            scanGlow={0.5}
+            scanSoftness={2}
+            scanDuration={2}
+            scanDelay={2}
+            scanOnClick={false}
+          />
+        </div>
+        <div style={{ width: '100%', maxWidth: '1200px', padding: '0 2rem', margin: '0 auto' }}>
+          <header style={{ maxWidth: '800px', zIndex: 1, position: 'relative' }}>
+            <h2 className="text-tertiary animate-fade-in" style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
+              Hello, my name is.
+            </h2>
+            <h1 className="animate-fade-in delay-1" style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem' }}>
+              Hiren Vaidya
+            </h1>
+            <h2 className="animate-fade-in delay-2 text-secondary" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, marginBottom: '2rem' }}>
+              I am a <span className="text-accent">Software</span> Engineer.
+            </h2>
+            <p className="animate-fade-in delay-3 text-secondary" style={{ fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '600px', marginBottom: '3rem', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
+              Specialized in deploying scalable infrastructure on AWS and building robust applications using .NET, Node.js, and React.js. I blend cloud automation with seamless user experiences.
+            </p>
+            <a href="#about" className="btn-outline animate-fade-in delay-4">
+              <ChevronRight size={18} /> More about me
+            </a>
+          </header>
+        </div>
+      </section>
 
-        {/* Hero Section */}
-        <header style={{ paddingTop: '15rem', paddingBottom: '8rem', maxWidth: '800px' }}>
-          <h2 className="text-tertiary animate-fade-in" style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
-            Hello, my name is.
-          </h2>
-          <h1 className="animate-fade-in delay-1" style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem' }}>
-            Hiren Vaidya
-          </h1>
-          <h2 className="animate-fade-in delay-2 text-secondary" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, marginBottom: '2rem' }}>
-            I am a <span className="text-accent">Software</span> Engineer.
-          </h2>
-          <p className="animate-fade-in delay-3 text-secondary" style={{ fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '600px', marginBottom: '3rem' }}>
-            Specialized in deploying scalable infrastructure on AWS and building robust applications using .NET, Node.js, and React.js. I blend cloud automation with seamless user experiences.
-          </p>
-          <a href="#about" className="btn-outline animate-fade-in delay-4">
-            <ChevronRight size={18} /> More about me
-          </a>
-        </header>
+      <main style={{ padding: '0 2rem', maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* About Section */}
         <section id="about" style={{ padding: '6rem 0' }}>

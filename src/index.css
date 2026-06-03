@@ -5,10 +5,10 @@
   --text-primary: #ffffff;
   --text-secondary: #929292;
   --text-tertiary: #696969;
-  --accent-color: #00FFB2;
+  --accent-color: #FF9FFC;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --accent-hover: rgba(0, 255, 178, 0.1);
+  --accent-hover: rgba(255, 159, 252, 0.1);
 }
 
 * {
