@@ -12,6 +12,7 @@
   "dependencies": {
     "@imgly/background-removal-node": "^1.4.5",
     "face-api.js": "^0.22.2",
+    "gsap": "^3.15.0",
     "lucide-react": "^0.294.0",
     "postprocessing": "^6.39.1",
     "react": "^18.2.0",

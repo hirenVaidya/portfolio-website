@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip, Code, Zap, Layers, Palette, Key, Box, GitBranch, Globe, Monitor } from 'lucide-react';
 import './index.css';
 import { GridScan } from './components/GridScan/GridScan';
+import BorderGlow from './components/BorderGlow/BorderGlow';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +38,7 @@ function App() {
         "PLAdvisory Broker Management: Architected a complex broker management system featuring dynamic dashboards, server-side pagination, and advanced filtering. Optimized frontend performance to achieve a Lighthouse score of 85+, reducing load times by 30%.",
         "Trade-Script Real-time Dashboard: Developed a Node.js backend with a real-time enabled frontend for live trade analysis. Enabled live data streaming for 50+ brokers, improving operational efficiency by 30% and reducing manual effort by 40%.",
         "Automation & Scaling: Automated image compression and report generation using CRON jobs, saving 6 man-hours daily. Streamlined data ingestion by implementing bulk insert functionality for large financial datasets.",
-        "EIPO Modernization: Revamped the EIPO frontend using React.js, modernizing the UI/UX and improving interaction speed and system responsiveness by 20%."
+        "EIPO Modernization: Revamped the EIPO frontend using React.js, modernizing the UI/UX and improving interaction speed and system responsiveness by 20%"
       ]
     }
   ];
@@ -71,10 +72,23 @@ function App() {
             <a href="#knowledge" className="nav-link">Knowledge</a>
             <a href="#experience" className="nav-link">Experience</a>
             <a href="#projects" className="nav-link">Projects</a>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
-              <Paperclip size={16} />
-              Resume
-            </a>
+            <BorderGlow
+              edgeSensitivity={30}
+              glowColor="160 100 50"
+              backgroundColor="rgba(18, 18, 18, 0.8)"
+              borderRadius={8}
+              glowRadius={40}
+              glowIntensity={1}
+              coneSpread={25}
+              animated={false}
+              colors={['#00ffb2', '#00ffff', '#00b2ff']}
+              className="border-glow-resume"
+            >
+              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', border: 'none', margin: '2px' }}>
+                <Paperclip size={16} />
+                Resume
+              </a>
+            </BorderGlow>
           </div>
         </div>
       </nav>
@@ -124,8 +138,8 @@ function App() {
       <main style={{ padding: '0 2rem', maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* About Section */}
-        <section id="about" style={{ padding: '6rem 0' }}>
-          <h1 style={{ fontSize: '10rem', color: 'rgba(255,255,255,0.02)', position: 'absolute', zIndex: -1, transform: 'translateY(-50px)', fontWeight: 800, letterSpacing: '10px', userSelect: 'none' }}>HIREN</h1>
+        <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
+
           <div className="section-title-container" style={{ marginTop: '5rem' }}>
             <Cpu size={28} className="text-accent" />
             <h3>About me</h3>
@@ -176,18 +190,67 @@ function App() {
               These are some of the technologies I have used and have great familiarity with:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
               {[
-                { name: 'React.js', icon: <Cpu size={32} className="text-accent" /> },
-                { name: 'Node.js', icon: <Server size={32} className="text-accent" /> },
-                { name: '.NET', icon: <Terminal size={32} className="text-accent" /> },
-                { name: 'AWS', icon: <Cloud size={32} className="text-accent" /> },
-                { name: 'SQL Server', icon: <Database size={32} className="text-accent" /> },
-                { name: 'TypeScript', icon: <Terminal size={32} className="text-accent" /> }
-              ].map((tech, i) => (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                  {tech.icon}
-                  <span className="text-secondary" style={{ fontWeight: 500 }}>{tech.name}</span>
+                {
+                  title: "Languages",
+                  icon: <Terminal size={18} className="text-accent"/>,
+                  items: [
+                    { name: 'JavaScript', icon: <Code size={32} className="text-accent" /> },
+                    { name: 'TypeScript', icon: <Code size={32} className="text-accent" /> },
+                    { name: 'C#', icon: <Terminal size={32} className="text-accent" /> },
+                    { name: '.NET Web API', icon: <Terminal size={32} className="text-accent" /> }
+                  ]
+                },
+                {
+                  title: "Frameworks & Technologies",
+                  icon: <Cpu size={18} className="text-accent"/>,
+                  items: [
+                    { name: 'Node.js', icon: <Server size={32} className="text-accent" /> },
+                    { name: 'Express.js', icon: <Server size={32} className="text-accent" /> },
+                    { name: 'React.js', icon: <Cpu size={32} className="text-accent" /> },
+                    { name: 'Next.js', icon: <Cpu size={32} className="text-accent" /> },
+                    { name: 'Fastify', icon: <Zap size={32} className="text-accent" /> },
+                    { name: 'MongoDB', icon: <Database size={32} className="text-accent" /> },
+                    { name: 'SQL Server', icon: <Database size={32} className="text-accent" /> },
+                    { name: 'Redux', icon: <Layers size={32} className="text-accent" /> },
+                    { name: 'Tailwind CSS', icon: <Palette size={32} className="text-accent" /> },
+                    { name: 'Redis', icon: <Database size={32} className="text-accent" /> },
+                    { name: 'JWT', icon: <Key size={32} className="text-accent" /> },
+                    { name: 'Zustand', icon: <Layers size={32} className="text-accent" /> }
+                  ]
+                },
+                {
+                  title: "Tools & Platforms",
+                  icon: <Server size={18} className="text-accent"/>,
+                  items: [
+                    { name: 'Docker', icon: <Box size={32} className="text-accent" /> },
+                    { name: 'TablePlus', icon: <Database size={32} className="text-accent" /> },
+                    { name: 'PgAdmin4', icon: <Database size={32} className="text-accent" /> },
+                    { name: 'Amplify', icon: <Cloud size={32} className="text-accent" /> },
+                    { name: 'GitHub Actions', icon: <GitBranch size={32} className="text-accent" /> },
+                    { name: 'Azure DevOps', icon: <Cloud size={32} className="text-accent" /> },
+                    { name: 'IIS', icon: <Server size={32} className="text-accent" /> },
+                    { name: 'Web', icon: <Globe size={32} className="text-accent" /> },
+                    { name: 'Windows', icon: <Monitor size={32} className="text-accent" /> },
+                    { name: 'Linux', icon: <Terminal size={32} className="text-accent" /> },
+                    { name: 'AWS', icon: <Cloud size={32} className="text-accent" /> },
+                    { name: 'GCP', icon: <Cloud size={32} className="text-accent" /> }
+                  ]
+                }
+              ].map((category, idx) => (
+                <div key={idx}>
+                  <h4 style={{ color: 'var(--text-primary)', marginBottom: '2rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                    {category.icon} {category.title}
+                  </h4>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+                    {category.items.map((tech, i) => (
+                      <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                        {tech.icon}
+                        <span className="text-secondary" style={{ fontWeight: 500, fontSize: '0.9rem' }}>{tech.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -270,7 +333,6 @@ function App() {
                 <span>MERN</span> <span>WebRTC</span> <span>Node.js</span> <span>Socket.io</span>
               </div>
             </div>
-
             {/* Image Processing */}
             <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
