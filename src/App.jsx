@@ -9,13 +9,49 @@ import ProfileCard from './components/ProfileCard/ProfileCard';
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scroll = windowHeight > 0 ? (totalScroll / windowHeight) : 0;
+      setScrollProgress(scroll);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Active Section Tracking
+    const sections = document.querySelectorAll('section[id]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(sec => sectionObserver.observe(sec));
+
+    return () => {
+      revealElements.forEach(el => revealObserver.unobserve(el));
+      sections.forEach(sec => sectionObserver.unobserve(sec));
+    };
   }, []);
 
   const experiences = [
@@ -48,6 +84,10 @@ function App() {
   return (
     <div style={{ position: 'relative' }}>
       <div className="noise"></div>
+      
+      <div className="scroll-progress-container">
+        <div className="scroll-progress-bar" style={{ width: `${scrollProgress * 100}%` }}></div>
+      </div>
 
       {/* Navigation */}
       <nav style={{
@@ -66,10 +106,10 @@ function App() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px' }}>
           <AnimatedLogo />
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links">
-            <a href="#about" className="nav-link">About</a>
-            <a href="#knowledge" className="nav-link">Knowledge</a>
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#projects" className="nav-link">Projects</a>
+            <a href="#about" className={`nav-link ${activeSection === 'about' ? 'active-link' : ''}`}>About</a>
+            <a href="#knowledge" className={`nav-link ${activeSection === 'knowledge' ? 'active-link' : ''}`}>Knowledge</a>
+            <a href="#experience" className={`nav-link ${activeSection === 'experience' ? 'active-link' : ''}`}>Experience</a>
+            <a href="#projects" className={`nav-link ${activeSection === 'projects' ? 'active-link' : ''}`}>Projects</a>
             <BorderGlow
               edgeSensitivity={30}
               glowColor="160 100 50"
@@ -140,7 +180,7 @@ function App() {
         {/* About Section */}
         <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
 
-          <div className="section-title-container" style={{ marginTop: '5rem' }}>
+          <div className="section-title-container reveal" style={{ marginTop: '5rem' }}>
             <Cpu size={28} className="text-accent" />
             <h3>About me</h3>
             <div className="section-line"></div>
@@ -191,7 +231,7 @@ function App() {
 
         {/* Knowledge Section */}
         <section id="knowledge" style={{ padding: '6rem 0' }}>
-          <div className="glass-card" style={{ position: 'relative', overflow: 'hidden' }}>
+          <div className="glass-card reveal" style={{ position: 'relative', overflow: 'hidden' }}>
             <div className="section-title-container" style={{ justifyContent: 'center' }}>
               <div className="section-line invert" style={{ flex: 1, display: 'block' }}></div>
               <Cloud size={28} className="text-accent" />
@@ -272,7 +312,7 @@ function App() {
 
         {/* Experience Section */}
         <section id="experience" style={{ padding: '6rem 0' }}>
-          <div className="section-title-container">
+          <div className="section-title-container reveal">
             <Briefcase size={28} className="text-accent" />
             <h3>Experience</h3>
             <div className="section-line"></div>
@@ -320,7 +360,7 @@ function App() {
 
         {/* Projects Section */}
         <section id="projects" style={{ padding: '6rem 0', marginBottom: '4rem' }}>
-          <div className="section-title-container">
+          <div className="section-title-container reveal">
             <Terminal size={28} className="text-accent" />
             <h3>Projects</h3>
             <div className="section-line"></div>
@@ -329,7 +369,7 @@ function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
             
             {/* NexSync */}
-            <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="glass-card reveal" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                 <Terminal size={32} className="text-accent" />
                 <div style={{ display: 'flex', gap: '1rem' }}>
@@ -347,7 +387,7 @@ function App() {
               </div>
             </div>
             {/* Image Processing */}
-            <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="glass-card reveal" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                 <Cloud size={32} className="text-accent" />
                 <div style={{ display: 'flex', gap: '1rem' }}>
