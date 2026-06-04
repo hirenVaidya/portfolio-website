@@ -5,6 +5,7 @@ import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import AnimatedLogo from './components/AnimatedLogo/AnimatedLogo';
 import ProfileCard from './components/ProfileCard/ProfileCard';
+import FallingCode from './components/FallingCode/FallingCode';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -83,6 +84,7 @@ function App() {
 
   return (
     <div style={{ position: 'relative' }}>
+      <FallingCode color="var(--accent-color)" />
       <div className="noise"></div>
       
       <div className="scroll-progress-container">
