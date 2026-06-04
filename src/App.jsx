@@ -179,7 +179,7 @@ function App() {
                 showUserInfo={false}
                 enableTilt={true}
                 enableMobileTilt={false}
-                iconUrl="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='3'><path d='M30 30 L10 50 L30 70 M70 30 L90 50 L70 70 M60 20 L40 80'/></svg>"
+                iconUrl="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='url(%23g)' stroke-width='3' stroke-dasharray='1, 5' stroke-linecap='round'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%237cff67' /%3E%3Cstop offset='50%25' stop-color='%23B497CF' /%3E%3Cstop offset='100%25' stop-color='%235227FF' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M35 30 L15 50 L35 70 M65 30 L85 50 L65 70 M60 20 L40 80'/%3E%3C/svg%3E"
                 onContactClick={() => window.location.href = 'mailto:hirenvaidya@example.com'}
                 behindGlowColor="var(--accent)"
                 behindGlowEnabled={true}
