@@ -179,6 +179,7 @@ function App() {
                 showUserInfo={false}
                 enableTilt={true}
                 enableMobileTilt={false}
+                iconUrl="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='3'><path d='M30 30 L10 50 L30 70 M70 30 L90 50 L70 70 M60 20 L40 80'/></svg>"
                 onContactClick={() => window.location.href = 'mailto:hirenvaidya@example.com'}
                 behindGlowColor="var(--accent)"
                 behindGlowEnabled={true}
