@@ -92,7 +92,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="scroll-stack-section hero-section" style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center' }}>
+      <section style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1, overflow: 'hidden' }}>
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <ColorBends
@@ -135,11 +135,10 @@ function App() {
         </div>
       </section>
 
-      <main style={{ width: '100%', position: 'relative' }}>
+      <main style={{ padding: '0 2rem', maxWidth: '1200px', margin: '0 auto' }}>
 
         {/* About Section */}
-        <section id="about" className="scroll-stack-section" style={{ position: 'relative' }}>
-          <div className="section-content">
+        <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
 
           <div className="section-title-container" style={{ marginTop: '5rem' }}>
             <Cpu size={28} className="text-accent" />
@@ -188,12 +187,10 @@ function App() {
               />
             </div>
           </div>
-          </div>
         </section>
 
         {/* Knowledge Section */}
-        <section id="knowledge" className="scroll-stack-section">
-          <div className="section-content">
+        <section id="knowledge" style={{ padding: '6rem 0' }}>
           <div className="glass-card" style={{ position: 'relative', overflow: 'hidden' }}>
             <div className="section-title-container" style={{ justifyContent: 'center' }}>
               <div className="section-line invert" style={{ flex: 1, display: 'block' }}></div>
@@ -271,12 +268,10 @@ function App() {
               ))}
             </div>
           </div>
-          </div>
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="scroll-stack-section">
-          <div className="section-content">
+        <section id="experience" style={{ padding: '6rem 0' }}>
           <div className="section-title-container">
             <Briefcase size={28} className="text-accent" />
             <h3>Experience</h3>
@@ -321,12 +316,10 @@ function App() {
               </ul>
             </div>
           </div>
-          </div>
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="scroll-stack-section">
-          <div className="section-content">
+        <section id="projects" style={{ padding: '6rem 0', marginBottom: '4rem' }}>
           <div className="section-title-container">
             <Terminal size={28} className="text-accent" />
             <h3>Projects</h3>
@@ -378,7 +371,6 @@ function App() {
             <a href="https://github.com/hirenVaidya" target="_blank" rel="noreferrer" className="btn-outline">
               <Github size={18} /> My Repositories
             </a>
-          </div>
           </div>
         </section>
 
