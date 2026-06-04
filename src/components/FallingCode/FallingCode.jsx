@@ -70,7 +70,7 @@ const FallingCode = ({ color = 'rgba(168, 85, 247, 0.25)' }) => {
         height: '100%',
         zIndex: 0,
         pointerEvents: 'none',
-        opacity: 0.4
+        opacity: 0.8
       }}
     />
   );

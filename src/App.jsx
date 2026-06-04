@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div style={{ position: 'relative' }}>
-      <FallingCode color="var(--accent-color)" />
+      <FallingCode color="rgba(255, 159, 252, 0.6)" />
       <div className="noise"></div>
       
       <div className="scroll-progress-container">
