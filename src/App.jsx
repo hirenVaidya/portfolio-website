@@ -5,7 +5,6 @@ import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import AnimatedLogo from './components/AnimatedLogo/AnimatedLogo';
 import ProfileCard from './components/ProfileCard/ProfileCard';
-import FallingCode from './components/FallingCode/FallingCode';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -180,7 +179,6 @@ function App() {
 
         {/* About Section */}
         <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
-          <FallingCode color="rgba(255, 159, 252, 0.6)" absolute={true} />
 
           <div className="section-title-container reveal" style={{ marginTop: '5rem' }}>
             <Cpu size={28} className="text-accent" />
