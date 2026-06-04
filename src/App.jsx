@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip, Code, Zap, Layers, Palette, Key, Box, GitBranch, Globe, Monitor } from 'lucide-react';
 import './index.css';
-import Aurora from './components/Aurora/Aurora';
+import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 
 function App() {
@@ -97,10 +97,22 @@ function App() {
       <section style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1, overflow: 'hidden' }}>
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-            <Aurora
-              colorStops={["#7cff67","#B497CF","#5227FF"]}
-              amplitude={1}
-              blend={0.5}
+            <ColorBends
+              colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
+              rotation={90}
+              speed={0.2}
+              scale={1}
+              frequency={1}
+              warpStrength={1}
+              mouseInfluence={1}
+              noise={0.15}
+              parallax={0.5}
+              iterations={1}
+              intensity={1.5}
+              bandWidth={6}
+              transparent
+              autoRotate={0}
+              color="#A855F7"
             />
           </div>
         </div>
