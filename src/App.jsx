@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip, Code, Zap, Layers, Palette, Key, Box, GitBranch, Globe, Monitor } from 'lucide-react';
 import './index.css';
-import { GridScan } from './components/GridScan/GridScan';
+import Aurora from './components/Aurora/Aurora';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 
 function App() {
@@ -96,23 +96,13 @@ function App() {
       {/* Hero Section */}
       <section style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1, overflow: 'hidden' }}>
-          <GridScan
-            sensitivity={0.55}
-            lineThickness={1}
-            linesColor="#2F293A"
-            scanColor="#FF9FFC"
-            scanOpacity={0.4}
-            gridScale={0.1}
-            lineStyle="solid"
-            lineJitter={0.1}
-            scanDirection="pingpong"
-            noiseIntensity={0.01}
-            scanGlow={0.5}
-            scanSoftness={2}
-            scanDuration={2}
-            scanDelay={2}
-            scanOnClick={false}
-          />
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <Aurora
+              colorStops={["#7cff67","#B497CF","#5227FF"]}
+              amplitude={1}
+              blend={0.5}
+            />
+          </div>
         </div>
         <div style={{ width: '100%', maxWidth: '1200px', padding: '0 2rem', margin: '0 auto' }}>
           <header style={{ maxWidth: '800px', zIndex: 1, position: 'relative' }}>
