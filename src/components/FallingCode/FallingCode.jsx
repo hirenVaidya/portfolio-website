@@ -2,31 +2,36 @@ import React, { useEffect, useRef } from 'react';
 
 const characters = ['{', '}', '(', ')', '[', ']', '<', '>', '/', '=', '+', '-', '*', ';', ':', '_', '|', '&'];
 
-const FallingCode = ({ color = 'rgba(168, 85, 247, 0.25)' }) => {
+const FallingCode = ({ color = 'rgba(168, 85, 247, 0.25)', absolute = false }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+    const parent = canvas.parentElement;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      if (absolute && parent) {
+        canvas.width = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
+    
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
     const fontSize = 20;
-    const columns = Math.floor(canvas.width / fontSize);
-    
-    const drops = [];
+    // We recalculate columns when resize happens, but let's just do it on mount for now
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = [];
     for (let i = 0; i < columns; i++) {
-      // Start drops at random heights so they don't fall in a straight line
       drops[i] = Math.random() * -100;
     }
 
     const draw = () => {
-      // Create trailing effect by filling with semi-transparent background color
       ctx.fillStyle = 'rgba(18, 18, 18, 0.15)'; 
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -42,7 +47,6 @@ const FallingCode = ({ color = 'rgba(168, 85, 247, 0.25)' }) => {
         
         ctx.fillText(text, x, y);
 
-        // Send drop back to top randomly after it crosses the screen
         if (y > canvas.height && Math.random() > 0.98) {
           drops[i] = 0;
         }
@@ -57,13 +61,13 @@ const FallingCode = ({ color = 'rgba(168, 85, 247, 0.25)' }) => {
       clearInterval(interval);
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, [color]);
+  }, [color, absolute]);
 
   return (
     <canvas
       ref={canvasRef}
       style={{
-        position: 'fixed',
+        position: absolute ? 'absolute' : 'fixed',
         top: 0,
         left: 0,
         width: '100%',

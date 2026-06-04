@@ -84,7 +84,6 @@ function App() {
 
   return (
     <div style={{ position: 'relative' }}>
-      <FallingCode color="rgba(255, 159, 252, 0.6)" />
       <div className="noise"></div>
       
       <div className="scroll-progress-container">
@@ -181,6 +180,7 @@ function App() {
 
         {/* About Section */}
         <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
+          <FallingCode color="rgba(255, 159, 252, 0.6)" absolute={true} />
 
           <div className="section-title-container reveal" style={{ marginTop: '5rem' }}>
             <Cpu size={28} className="text-accent" />
