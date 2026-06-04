@@ -1,0 +1,67 @@
+.animated-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.logo-x {
+  font-size: 1.8rem;
+  margin: 0 0.2rem;
+  display: inline-block;
+  transform-origin: center center;
+}
+
+.name {
+  display: inline-block;
+  min-width: 60px; /* Adjust based on text width to prevent layout shifts */
+  text-align: center;
+  transform-origin: center center;
+}
+
+.name-left {
+  text-align: right;
+}
+
+.name-right {
+  text-align: left;
+}
+
+/* Animations */
+.animate-in-out {
+  animation: slideIntoXLeft 1.5s ease-in-out forwards;
+}
+
+.animate-in-out-reverse {
+  animation: slideIntoXRight 1.5s ease-in-out forwards;
+}
+
+.animate-spin {
+  animation: spinX 1.5s ease-in-out forwards;
+}
+
+@keyframes slideIntoXLeft {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  33% { transform: translateX(40px) scale(0); opacity: 0; }
+  66% { transform: translateX(40px) scale(0); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes slideIntoXRight {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  33% { transform: translateX(-40px) scale(0); opacity: 0; }
+  66% { transform: translateX(-40px) scale(0); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes spinX {
+  0% { transform: rotateY(0deg); }
+  33% { transform: rotateY(0deg); }
+  66% { transform: rotateY(180deg); }
+  100% { transform: rotateY(180deg); }
+}

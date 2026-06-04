@@ -3,6 +3,8 @@ import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, S
 import './index.css';
 import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
+import AnimatedLogo from './components/AnimatedLogo/AnimatedLogo';
+import ProfileCard from './components/ProfileCard/ProfileCard';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -62,11 +64,7 @@ function App() {
         justifyContent: 'center',
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px' }}>
-          <a href="#" style={{ fontSize: '1.5rem', fontWeight: 800, textDecoration: 'none', color: 'white', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
-            <span>Hiren</span>
-            <span className="text-accent text-tertiary" style={{ fontSize: '1.8rem', margin: '0 0.2rem' }}>X</span>
-            <span>Vaidya</span>
-          </a>
+          <AnimatedLogo />
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links">
             <a href="#about" className="nav-link">About</a>
             <a href="#knowledge" className="nav-link">Knowledge</a>
@@ -171,9 +169,21 @@ function App() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-              <div className="about-img-box">
-                <img src="/profile.png" alt="Hiren Vaidya" style={{ width: '300px', height: '400px', objectFit: 'cover' }} />
-              </div>
+              <ProfileCard
+                name="Hiren Vaidya"
+                title="Software Engineer"
+                handle="hirenVaidya"
+                status="Online"
+                contactText="Contact Me"
+                avatarUrl="/profile.png"
+                showUserInfo={false}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => window.location.href = 'mailto:hirenvaidya@example.com'}
+                behindGlowColor="var(--accent)"
+                behindGlowEnabled={true}
+                innerGradient="linear-gradient(145deg, rgba(30,30,30,0.8) 0%, rgba(50,50,50,0.5) 100%)"
+              />
             </div>
           </div>
         </section>
