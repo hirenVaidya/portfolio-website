@@ -5,6 +5,7 @@ import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import AnimatedLogo from './components/AnimatedLogo/AnimatedLogo';
 import ProfileCard from './components/ProfileCard/ProfileCard';
+import ScrollReveal from './components/ScrollReveal/ScrollReveal';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -103,7 +104,7 @@ function App() {
         display: 'flex',
         justifyContent: 'center',
       }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px' }}>
+        <div className="nav-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px' }}>
           <AnimatedLogo />
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links">
             <a href="#about" className={`nav-link ${activeSection === 'about' ? 'active-link' : ''}`}>About</a>
@@ -186,11 +187,17 @@ function App() {
             <div className="section-line"></div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginTop: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '4rem', marginTop: '3rem' }}>
             <div>
-              <p className="text-secondary" style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
+              <ScrollReveal
+                baseOpacity={0.1}
+                enableBlur
+                baseRotation={3}
+                blurStrength={4}
+                textClassName="text-secondary"
+              >
                 Hello! 👋 I'm Hiren Vaidya, an ambitious Software Engineer. As a FullStack Developer, I bring hands-on experience with a versatile tech stack including React, Node.js, .NET, and AWS cloud infrastructure.
-              </p>
+              </ScrollReveal>
               
               <h4 style={{ fontSize: '1.1rem', color: 'white', marginBottom: '0.5rem', marginTop: '2rem' }}>Frontend & UI:</h4>
               <p className="text-secondary" style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
@@ -366,7 +373,7 @@ function App() {
             <div className="section-line"></div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
             
             {/* NexSync */}
             <div className="glass-card reveal" style={{ display: 'flex', flexDirection: 'column' }}>

@@ -502,3 +502,62 @@ section {
   font-weight: 700;
   text-shadow: 0 0 10px rgba(255, 159, 252, 0.5);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Navigation */
+  nav {
+    padding: 1rem !important;
+  }
+  .nav-header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav-links {
+    gap: 1rem !important;
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start !important;
+    padding-bottom: 0.5rem;
+    /* Hide scrollbar for swipable nav */
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-link {
+    font-size: 0.9rem !important;
+    white-space: nowrap;
+  }
+
+  /* Layout and Typography */
+  main {
+    padding: 0 1rem !important;
+  }
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+    white-space: normal !important;
+  }
+  .hero-section {
+    padding-top: 8rem !important;
+    padding-bottom: 3rem !important;
+  }
+  section {
+    padding: 4rem 0 !important;
+  }
+  
+  /* Utilities */
+  .section-title-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  .section-line {
+    width: 100% !important;
+    margin-top: 0.5rem;
+  }
+}
