@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip, Code, Zap, Layers, Palette, Key, Box, GitBranch, Globe, Monitor } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip, Code, Zap, Layers, Palette, Key, Box, GitBranch, Globe, Monitor, Menu, X } from 'lucide-react';
 import './index.css';
 import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
@@ -12,6 +12,7 @@ function App() {
   const [activeTab, setActiveTab] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,11 +107,20 @@ function App() {
       }}>
         <div className="nav-header-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px' }}>
           <AnimatedLogo />
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="nav-links">
-            <a href="#about" className={`nav-link ${activeSection === 'about' ? 'active-link' : ''}`}>About</a>
-            <a href="#knowledge" className={`nav-link ${activeSection === 'knowledge' ? 'active-link' : ''}`}>Knowledge</a>
-            <a href="#experience" className={`nav-link ${activeSection === 'experience' ? 'active-link' : ''}`}>Experience</a>
-            <a href="#projects" className={`nav-link ${activeSection === 'projects' ? 'active-link' : ''}`}>Projects</a>
+          
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            style={{ display: 'none', background: 'none', border: 'none', color: 'white', cursor: 'pointer', zIndex: 1001 }}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className={`nav-link ${activeSection === 'about' ? 'active-link' : ''}`}>About</a>
+            <a href="#knowledge" onClick={() => setIsMobileMenuOpen(false)} className={`nav-link ${activeSection === 'knowledge' ? 'active-link' : ''}`}>Knowledge</a>
+            <a href="#experience" onClick={() => setIsMobileMenuOpen(false)} className={`nav-link ${activeSection === 'experience' ? 'active-link' : ''}`}>Experience</a>
+            <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className={`nav-link ${activeSection === 'projects' ? 'active-link' : ''}`}>Projects</a>
             <BorderGlow
               edgeSensitivity={30}
               glowColor="160 100 50"
