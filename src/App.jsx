@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, ChevronRight, Terminal, Cloud, Cpu, Database, Server, ExternalLink, Briefcase, GraduationCap, Award, Paperclip, Code, Zap, Layers, Palette, Key, Box, GitBranch, Globe, Monitor, Menu, X } from 'lucide-react';
+import Lenis from 'lenis';
 import './index.css';
 import ColorBends from './components/ColorBends/ColorBends';
 import BorderGlow from './components/BorderGlow/BorderGlow';
@@ -12,6 +13,27 @@ function App() {
   const [activeTab, setActiveTab] = useState(0);
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
