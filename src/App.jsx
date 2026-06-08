@@ -10,18 +10,12 @@ import ScrollReveal from './components/ScrollReveal/ScrollReveal';
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = windowHeight > 0 ? (totalScroll / windowHeight) : 0;
-      setScrollProgress(scroll);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -86,10 +80,6 @@ function App() {
   return (
     <div style={{ position: 'relative' }}>
       <div className="noise"></div>
-      
-      <div className="scroll-progress-container">
-        <div className="scroll-progress-bar" style={{ width: `${scrollProgress * 100}%` }}></div>
-      </div>
 
       {/* Navigation */}
       <nav style={{
